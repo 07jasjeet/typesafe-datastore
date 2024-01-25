@@ -4,7 +4,7 @@
 ## Basic Usage
  
 Create preferences as follows:
-  ```
+  ```kotlin
   // Create your DataStore
   private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("prefs")
 
@@ -22,13 +22,13 @@ Create preferences as follows:
  
   In-order to create **Custom** [DataStorePreference] you need to do some steps.
   Firstly, create a new interface as follows with your newer implementations init.
-  ```
+  ```kotlin
   interface CustomPreference<T, R>: Preference<T, R> {
        // create new Functions
   }
   ```
   Then, extend this class as follows:
-  ```
+  ```kotlin
   abstract class CustomDataStore(dataStore: DataStore<Preferences>): TypeSafeDataStore(dataStore) {
       // Optional helper function.
       fun <T, R> createCustomPreference(
@@ -48,7 +48,7 @@ Create preferences as follows:
   Why go all through this? Testability.
   
   Now to use the new preference, do as follows as you do with normal preferences.
-  ```
+  ```kotlin
   private val Context.dataStore: DataStore<Preferences> by ...
   
   class UserPreferences(context: Context): CustomDataStore(context.dataStore) {
@@ -60,3 +60,24 @@ Create preferences as follows:
            get() = createCustomPreference(anotherKey, anotherSerializer)
   }
   ```
+
+## Testing
+
+ And now for the best part, mocking! Using [mockito-kotlin](https://github.com/mockito/mockito-kotlin) or any other mocking framework, in your test file, do this:
+ ```kotlin
+ @RunWith(MockitoJUnitRunner::class)
+ class Test {
+
+   @Mock
+   lateinit var appPreferences: AppPreferences
+ 
+   fun test {
+      wheneverBlocking { 
+        appPreferences.somePreference 
+      }.doReturn(mockPreference(SomeMockClass()))
+   
+      // Your value will be mocked!
+      appPreferences.somePreference.get()
+   }
+ }
+ ```
