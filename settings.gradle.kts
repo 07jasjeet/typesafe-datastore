@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Type-Safe DataStore"
+rootProject.name = "typesafe-datastore"
 include(":app")
-include(":Typesafe-DataStore")
+include(":typesafe-datastore")

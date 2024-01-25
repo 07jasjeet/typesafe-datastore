@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":Typesafe-DataStore"))
+    implementation(project(":typesafe-datastore"))
     
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.core:core-ktx:1.12.0")
