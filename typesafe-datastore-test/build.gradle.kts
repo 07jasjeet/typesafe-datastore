@@ -47,7 +47,7 @@ dependencies {
 publishing {
     publications {
         create<MavenPublication>("release") {
-            groupId = "com.jasjeet"
+            groupId = "com.github.07jasjeet"
             artifactId = "typesafe-datastore-test"
             version = "1.0"
             
