@@ -1,5 +1,5 @@
 # TypeSafe-DataStore
- TypeSafeDataStore is an abstraction layer on top of DataStore that provides type-safety without dealing with Proto-DataStore. 
+ TypeSafeDataStore is an abstraction layer on top of SharedPreferences DataStore that provides type-safety without dealing with Proto-DataStore. 
   
   Why TypeSafe-DataStore?
   1. Proto-DataStore is complex, requires plugins and simply overkill for SharedPreferences. Prefer using Room if performance comes into play.
