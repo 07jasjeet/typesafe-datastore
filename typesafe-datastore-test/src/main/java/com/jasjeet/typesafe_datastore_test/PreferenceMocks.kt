@@ -6,7 +6,7 @@ import com.jasjeet.typesafe_datastore.preferences.PrimitivePreference
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-object PreferenceMockUtil {
+object PreferenceMocks {
     fun <T> mockPrimitivePreference(mockValue: T): PrimitivePreference<T> =
         object : PrimitivePreference<T> {
             override suspend fun get(): T = mockValue
