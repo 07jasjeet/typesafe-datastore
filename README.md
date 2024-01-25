@@ -5,9 +5,16 @@
  
 Create preferences as follows:
   ```
-  val key = booleanPreferencesKey("my-key")
+  // Create your DataStore
+  private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("prefs")
+
+  // Your preferences class in the same file
+  class MyPreferences(context: Context): TypeSafeDataStore(context.dataStore)
+      companion object {
+           val key = booleanPreferencesKey("my-key")
+      }
   
-  val preference: PrimitivePreference<Boolean>
+      val preference: PrimitivePreference<Boolean>
           get() = createPrimitivePreference(key, false)
   ```
  
