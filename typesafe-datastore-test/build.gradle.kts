@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jasjeet.typesafe_datastore"
+    namespace = "com.jasjeet.typesafe_datastore_test"
     compileSdk = 34
     
     defaultConfig {
@@ -17,7 +17,7 @@ android {
     
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -40,15 +40,15 @@ android {
 }
 
 dependencies {
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-    testImplementation("junit:junit:4.13.2")
+    implementation(project(":typesafe-datastore"))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
 }
 
 publishing {
     publications {
         create<MavenPublication>("release") {
             groupId = "com.jasjeet"
-            artifactId = "typesafe-datastore"
+            artifactId = "typesafe-datastore-test"
             version = "1.0"
             
             pom {

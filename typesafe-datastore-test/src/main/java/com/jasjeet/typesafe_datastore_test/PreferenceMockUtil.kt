@@ -1,4 +1,4 @@
-package com.jasjeet.typesafe_datastore
+package com.jasjeet.typesafe_datastore_test
 
 import com.jasjeet.typesafe_datastore.preferences.ComplexPreference
 import com.jasjeet.typesafe_datastore.preferences.Preference
