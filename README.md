@@ -21,7 +21,7 @@ Create preferences as follows:
 ## Custom Preferences
  
   In-order to create **Custom** [DataStorePreference] you need to do some steps.
-  Firstly, create a new interface as follows with your newer implementations init.
+  Firstly, create a new interface as follows with your newer implementation in it.
   ```kotlin
   interface CustomPreference<T, R>: Preference<T, R> {
        // create new Functions
