@@ -1,10 +1,39 @@
 # TypeSafe-DataStore
- TypeSafeDataStore is a lightweight abstraction layer on top of SharedPreferences DataStore that provides type-safety without dealing with Proto-DataStore. 
+  TypeSafeDataStore is a **lightweight** abstraction layer on top of SharedPreferences DataStore that provides type-safety without dealing with Proto-DataStore. 
   
   Why TypeSafe-DataStore?
   1. Proto-DataStore is complex, requires plugins and simply overkill for SharedPreferences. Prefer using Room if performance comes into play.
-  2. If one is already using Preferences DataStore but wants type-safety, migrating to Proto-DataStore would be a lot of pain in a live app since Proto-DataStore uses Protocol Buffers under the hood. Whereas, this implementation, provides flexibility and easy of migration on a live app.
-  3. Apart from type-safety, various migration functions have been provided to migrate data inside data-store in a type-safe way.
+  2. If one is already using Preferences DataStore but wants type-safety, migrating to Proto-DataStore would be a lot of pain in a live app since Proto-DataStore uses Protocol Buffers under the hood. Whereas, this implementation, provides **flexibility** and **easy of migration** on a live app.
+  3. Apart from type-safety, various **migration functions** have been included to migrate data inside DataStore in a type-safe way.
+  4. **Testing** is really easy.
+
+## Gradle Dependency
+ Add the JitPack repository to your project's build.gradle file
+ ```gradle
+ allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+ }
+ ```
+Add the dependency in your app's build.gradle file
+```gradle
+dependencies {
+    // Type-safe datastore
+    implementation("com.github.07jasjeet:typesafe-datastore:1.0")
+    // Alternatively - Gson backed type-safe datastore
+    implementation("com.github.07jasjeet:typesafe-datastore-gson:1.0")   
+
+    // Testing
+    testImplementation("com.github.07jasjeet:typesafe-datastore-test:1.0")
+}
+```
+## Development
+
+- Prerequisite: Latest version of the Android Studio and SDKs on your pc.
+- Clone this repository.
+- Use the `gradlew build` command to build the project directly or use the IDE to run the project to your phone or the emulator.
 
 ## Basic Usage
  
@@ -42,12 +71,6 @@ Create preferences as follows:
       ): CustomPreference<T>, DataStorePreference<T, R>(key, serializer) {
            // ... override functions.
       }
-
-      /* OPTIONAL helper function. */
-      fun <T, R> createCustomPreference(
-          key: Preferences.Key<R>,
-          serializer: DataStoreSerializer<T, R>
-      ): CustomPreference<T, R> = object: CustomDataStorePreference<T, R>(key, serializer) {}
   }
   ```
   Why go all through this? Testability.
@@ -66,6 +89,24 @@ Create preferences as follows:
   }
   ```
 
+## Migrations
+
+Jetpack DataStore currently has solution to migrate SharedPreference to Preferences DataStore, but there is no such shorthand solution for intra-DataStore migrations.
+Migrating a simple preference from one key to another can be done as follows:
+```kotlin
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
+    name = "name",
+    produceMigrations = {
+         listOf(
+             IntraDataMigration(currentKey, newKey) { currentValue ->
+                  // Run transformations
+                  return newValue
+             }
+         )
+    }
+)
+```
+
 ## Testing
 
  And now for the best part, mocking! Using [mockito-kotlin](https://github.com/mockito/mockito-kotlin) or any other mocking framework, in your test file, do this:
@@ -74,15 +115,18 @@ Create preferences as follows:
  class Test {
 
    @Mock
-   lateinit var appPreferences: AppPreferences
+   lateinit var myPreferences: MyPreferences
  
    fun test {
       wheneverBlocking { 
-        appPreferences.somePreference 
-      }.doReturn(mockPreference(SomeMockClass()))
+        myPreferences.booleanPreference 
+      }.doReturn(MockPrimitivePreference(true))
    
-      // Your value will be mocked!
-      appPreferences.somePreference.get()
+      // Your values will be mocked!
+      appPreferences.booleanPreference.get()
+      appPreferences.booleanPreference.set()
+      appPreferences.booleanPreference.getFlow()
+      appPreferences.booleanPreference.getAndUpdate{ ... }
    }
  }
  ```
