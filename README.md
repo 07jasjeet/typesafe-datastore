@@ -20,7 +20,13 @@
 Add the dependency in your app's build.gradle file
 ```gradle
 dependencies {
-    implementation 'com.github.akshaaatt:Google-IAP:1.6.0'
+    // Type-safe datastore
+    implementation("com.github.07jasjeet:typesafe-datastore:1.0")
+    // Alternatively - Gson backed type-safe datastore
+    implementation("com.github.07jasjeet:typesafe-datastore-gson:1.0")   
+
+    // Testing
+    testImplementation("com.github.07jasjeet:typesafe-datastore-test:1.0")
 }
 ```
 ## Development
