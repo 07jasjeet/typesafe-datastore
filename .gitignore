@@ -32,4 +32,4 @@ google-services.json
 *.env
 gradle.properties
 
-secring.gpg
+typesafe-datastore/secring.gpg

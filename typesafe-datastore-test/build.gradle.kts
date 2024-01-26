@@ -55,7 +55,7 @@ mavenPublishing {
     publishToMavenCentral(SonatypeHost.S01)
     
     signAllPublications()
-    coordinates("com.github.07jasjeet", "typesafe-datastore-test", "1.0-SNAPSHOT")
+    coordinates("com.github.07jasjeet", "typesafe-datastore-test", "1.0")
     
     pom {
         name.set(project.name)
@@ -76,12 +76,6 @@ mavenPublishing {
                 name = "Jasjeet Singh"
                 email = "07jasjeet@gmail.com"
             }
-        }
-        
-        scm {
-            url.set("https://github.com/07jasjeet/TypeSafe-DataStore/")
-            connection.set("scm:git:git://github.com/07jasjeet/TypeSafe-DataStore.git")
-            developerConnection.set("scm:git:ssh://git@github.com/07jasjeet/TypeSafe-DataStore.git")
         }
     }
 }
