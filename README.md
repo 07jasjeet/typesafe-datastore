@@ -21,12 +21,12 @@ Add the dependency in your app's build.gradle file
 ```gradle
 dependencies {
     // Type-safe datastore
-    implementation("com.github.07jasjeet:typesafe-datastore:1.0.0")
+    implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:1.0.0")
     // Alternatively - Gson backed type-safe datastore
-    implementation("com.github.07jasjeet:typesafe-datastore-gson:1.0.0")   
+    implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-gson:1.0.0")   
 
     // Testing
-    testImplementation("com.github.07jasjeet:typesafe-datastore-test:1.0.0")
+    testImplementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-test:1.0.0")
 }
 ```
 ## Development
@@ -35,21 +35,63 @@ dependencies {
 - Clone this repository.
 - Use the `gradlew build` command to build the project directly or use the IDE to run the project to your phone or the emulator.
 
-## Basic Usage
- 
-Create preferences as follows:
-  ```kotlin
-  // Create your DataStore
-  private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("prefs")
+## Usage (AutoTypedDataStore)
+`AutoTypedDataStore` has various preference creation functions that are backed by `Gson` serializer so that you don't have to write your own
+serializers everytime.
 
-  // Your preferences class in the same file
+To get Started, import the library by adding the following dependency.
+```gradle
+implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:1.0.0")
+```
+And now use as follows:
+```kotlin
+// Your DataStore
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("prefs")
+
+class MyAutoTypedPreferences(context: Context): AutoTypedDataStore(context.dataStore) {
+    companion object {
+        val key = stringPreferencesKey("key")
+    }
+    
+    val listPref: ComplexPreference<List<String>>
+        get() = createListPreference(key)
+
+    // or
+
+    val mapPref: ComplexPreference<Map<String, List<String>>>
+        get() = createMapPreference(key)
+
+    // ... and many other pre-defined preferences
+}
+```
+You can also add custom preferences without any boilerplate as follows:
+```kotlin
+val key = stringPreferencesKey("key")
+
+val customPref: ComplexPreference<SomeClass>
+    get() = createCustomPreference(key)
+```
+
+## Usage (TypeSafeDataStore)
+
+If you want to use your own serialization library, you can use `TypeSafeDataStore` and create preferences. To do that, import
+this library by adding the following dependency:
+```gradle
+implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:1.0.0")
+```
+  ```kotlin
   class MyPreferences(context: Context): TypeSafeDataStore(context.dataStore)
       companion object {
-           val key = booleanPreferencesKey("my-key")
+          val key = booleanPreferencesKey("my-key")
       }
-  
+
       val preference: PrimitivePreference<Boolean>
           get() = createPrimitivePreference(key, false)
+
+      // or
+
+      val complexPref: ComplexPreference<List<List<String>>>
+          get() = createComplexPreference(key, serializer)
   ```
  
 ## Custom Preferences
@@ -58,7 +100,7 @@ Create preferences as follows:
   Firstly, create a new interface as follows with your newer implementation in it.
   ```kotlin
   interface CustomPreference<T, R>: Preference<T, R> {
-       // create new Functions
+       // create new Functions such as getSorted() etc...
   }
   ```
   Then, extend this class as follows:
@@ -109,7 +151,12 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
 
 ## Testing
 
- And now for the best part, mocking! Using [mockito-kotlin](https://github.com/mockito/mockito-kotlin) or any other mocking framework, in your test file, do this:
+ And now for the best part, mocking! To get started, import this library by adding the following as a dependency.
+ ```gradle
+ testImplementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-test:1.0.0")
+ ```
+ 
+ Using [mockito-kotlin](https://github.com/mockito/mockito-kotlin) or any other mocking framework, in your test file, do this:
  ```kotlin
  @RunWith(MockitoJUnitRunner::class)
  class Test {
