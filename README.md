@@ -89,6 +89,24 @@ Create preferences as follows:
   }
   ```
 
+## Migrations
+
+Jetpack DataStore currently has solution to migrate SharedPreference to Preferences DataStore, but there is no such shorthand solution for intra-DataStore migrations.
+Migrating a simple preference from one key to another can be done as follows:
+```kotlin
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
+    name = "name",
+    produceMigrations = {
+         listOf(
+             IntraDataStoreMigration(currentKey, newKey) { currentValue ->
+                  // Run transformations
+                  return newValue
+             }
+         )
+    }
+)
+```
+
 ## Testing
 
  And now for the best part, mocking! Using [mockito-kotlin](https://github.com/mockito/mockito-kotlin) or any other mocking framework, in your test file, do this:
@@ -97,18 +115,18 @@ Create preferences as follows:
  class Test {
 
    @Mock
-   lateinit var appPreferences: AppPreferences
+   lateinit var myPreferences: MyPreferences
  
    fun test {
       wheneverBlocking { 
-        appPreferences.booleanPreference 
+        myPreferences.booleanPreference 
       }.doReturn(MockPrimitivePreference(true))
    
       // Your values will be mocked!
-      appPreferences.somePreference.get()
-      appPreferences.somePreference.set()
-      appPreferences.somePreference.getFlow()
-      appPreferences.somePreference.getAndUpdate{ ... }
+      appPreferences.booleanPreference.get()
+      appPreferences.booleanPreference.set()
+      appPreferences.booleanPreference.getFlow()
+      appPreferences.booleanPreference.getAndUpdate{ ... }
    }
  }
  ```
