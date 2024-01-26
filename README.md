@@ -46,7 +46,7 @@ implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:1.0.0
 And now use as follows:
 ```kotlin
 // Your DataStore
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("prefs")
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore("prefs")
 
 class MyAutoTypedPreferences(context: Context): AutoTypedDataStore(context.dataStore) {
     companion object {
