@@ -7,6 +7,28 @@
   3. Apart from type-safety, various migration functions have been provided to migrate data inside data-store in a type-safe way.
   4. Testing is really easy.
 
+## Gradle Dependency
+ Add the JitPack repository to your project's build.gradle file
+ ```gradle
+ allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+ }
+ ```
+Add the dependency in your app's build.gradle file
+```gradle
+dependencies {
+    implementation 'com.github.akshaaatt:Google-IAP:1.6.0'
+}
+```
+## Development
+
+- Prerequisite: Latest version of the Android Studio and SDKs on your pc.
+- Clone this repository.
+- Use the `gradlew build` command to build the project directly or use the IDE to run the project to your phone or the emulator.
+
 ## Basic Usage
  
 Create preferences as follows:
@@ -43,12 +65,6 @@ Create preferences as follows:
       ): CustomPreference<T>, DataStorePreference<T, R>(key, serializer) {
            // ... override functions.
       }
-
-      /* OPTIONAL helper function. */
-      fun <T, R> createCustomPreference(
-          key: Preferences.Key<R>,
-          serializer: DataStoreSerializer<T, R>
-      ): CustomPreference<T, R> = object: CustomDataStorePreference<T, R>(key, serializer) {}
   }
   ```
   Why go all through this? Testability.
