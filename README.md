@@ -1,5 +1,5 @@
-# Typesafe-Datastore
-  TypeSafeDataStore is a **lightweight** abstraction layer on top of SharedPreferences DataStore that provides type-safety without dealing with Proto-DataStore. 
+# Typesafe-Datastore      [![](https://jitpack.io/v/07jasjeet/typesafe-datastore.svg)](https://jitpack.io/#07jasjeet/typesafe-datastore)
+  Typesafe-Datastore is a **lightweight** abstraction layer on top of SharedPreferences DataStore that provides type-safety without dealing with Proto-DataStore. 
   
   Why Typesafe-Datastore?
   1. Proto-DataStore is complex, requires plugins and simply overkill for SharedPreferences. Prefer using Room if performance comes into play.
