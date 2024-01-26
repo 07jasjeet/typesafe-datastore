@@ -40,12 +40,6 @@ import java.io.IOException
  * Then, extend this class as follows:
  * ```
  * abstract class UserDataStore(dataStore: DataStore<Preferences>): TypeSafeDataStore(dataStore) {
- *     // Optional helper function.
- *     fun <T, R> createCustomPreference(
- *         key: Preferences.Key<R>,
- *         serializer: DataStoreSerializer<T, R>
- *     ): CustomPreference<T, R> = object: MyDataStorePreference<T, R>(key, serializer) {}
- * 
  *     // Required
  *     abstract inner class MyDataStorePreference<T, R>(
  *         key: Preferences.Key<R>,
@@ -53,6 +47,12 @@ import java.io.IOException
  *     ): CustomPreference<T>, DataStorePreference<T, R>(key, serializer) {
  *          // ... override functions.
  *     }
+ *
+ *     // Optional helper function.
+ *     fun <T, R> createCustomPreference(
+ *         key: Preferences.Key<R>,
+ *         serializer: DataStoreSerializer<T, R>
+ *     ): CustomPreference<T, R> = object: MyDataStorePreference<T, R>(key, serializer) {}
  * }
  * ```
  * Why go all through this? Testability.

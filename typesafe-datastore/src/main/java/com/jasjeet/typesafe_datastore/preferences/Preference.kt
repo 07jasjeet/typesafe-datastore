@@ -13,7 +13,8 @@ interface Preference<T, R> {
     /** @return [Result] If the value was updated or not. Use [Result.isSuccess] or [Result.isFailure].*/
     suspend fun set(value: T): Result<Unit>
     
-    /** Update the value of the preference in an atomic read-modify-write manner.
+    /** Update the value of the preference in an atomic read-modify-write manner. Heavy calculations can
+     * be done inside the [update] block.
      * @return Result If the operation was successful or not. Use [Result.isSuccess] or [Result.isFailure].*/
     suspend fun getAndUpdate(update: (T) -> T): Result<Unit>
 }
