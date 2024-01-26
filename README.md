@@ -79,7 +79,7 @@ Create preferences as follows:
    fun test {
       wheneverBlocking { 
         appPreferences.somePreference 
-      }.doReturn(mockPreference(SomeMockClass()))
+      }.doReturn(MockPreference(SomeMockClass()))
    
       // Your value will be mocked!
       appPreferences.somePreference.get()
