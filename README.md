@@ -104,7 +104,8 @@ this library by adding the following dependency:
 ```gradle
 implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:$version")
 ```
-  ```kotlin
+Similarly as before, extend your preferences class as shown.
+```kotlin
   class MyPreferences(context: Context): TypeSafeDataStore(context.dataStore)
       companion object {
           val key = booleanPreferencesKey("my-key")
