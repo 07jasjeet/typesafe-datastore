@@ -50,7 +50,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.07jasjeet"
             artifactId = "typesafe-datastore-gson"
-            version = "1.0"
+            version = "1.0.0"
             
             afterEvaluate {
                 from(components["release"])
