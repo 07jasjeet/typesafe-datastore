@@ -69,7 +69,7 @@ You can also add custom preferences without any boilerplate as follows:
 val key = stringPreferencesKey("key")
 
 val customPref: ComplexPreference<SomeClass>
-    get() = createCustomPreference(key)
+    get() = createCustomPreference(key, defaultValue)
 ```
 
 ## Usage (TypeSafeDataStore)
