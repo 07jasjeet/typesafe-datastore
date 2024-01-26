@@ -95,8 +95,8 @@ Create preferences as follows:
  
    fun test {
       wheneverBlocking { 
-        appPreferences.somePreference 
-      }.doReturn(MockPreference(SomeMockClass()))
+        appPreferences.booleanPreference 
+      }.doReturn(MockPrimitivePreference(true))
    
       // Your value will be mocked!
       appPreferences.somePreference.get()
