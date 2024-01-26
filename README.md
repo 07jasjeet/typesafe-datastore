@@ -78,6 +78,9 @@ To use these preferences, simply do as follows:
 val preferences = MyAutoTypedPreferences(context)
 
 preferences.listPref.get()
+preferences.listPref.set(...)
+preferences.listPref.getFlow()
+preferences.listPref.getAndUpdate{ ... }
 ```
 
 ## Usage (TypeSafeDataStore)
