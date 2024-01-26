@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jasjeet.typesafe_datastore"
+    namespace = "com.jasjeet.typesafe_datastore_gson"
     compileSdk = 34
     
     defaultConfig {
@@ -40,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":typesafe-datastore"))
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 }
 
@@ -47,7 +49,7 @@ publishing {
     publications {
         create<MavenPublication>("release") {
             groupId = "com.github.07jasjeet"
-            artifactId = "typesafe-datastore"
+            artifactId = "typesafe-datastore-gson"
             version = "1.0"
             
             afterEvaluate {

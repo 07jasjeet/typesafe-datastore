@@ -5,6 +5,9 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import com.jasjeet.typesafe_datastore.DataStoreSerializer.Companion.defaultSerializer
 import com.jasjeet.typesafe_datastore.TypeSafeDataStore.DataStorePreference
+import com.jasjeet.typesafe_datastore.migrations.CustomMigration
+import com.jasjeet.typesafe_datastore.migrations.InPlaceDataMigration
+import com.jasjeet.typesafe_datastore.migrations.IntraDataMigration
 import com.jasjeet.typesafe_datastore.preferences.ComplexPreference
 import com.jasjeet.typesafe_datastore.preferences.Preference
 import com.jasjeet.typesafe_datastore.preferences.PrimitivePreference
@@ -70,25 +73,25 @@ import java.io.IOException
  *          get() = createCustomPreference(anotherKey, anotherSerializer)
  * }
  * ```
+ * To produce migrations inside DataStore, see [IntraDataMigration], [InPlaceDataMigration] and [CustomMigration].
  */
 abstract class TypeSafeDataStore(private val dataStore: DataStore<Preferences>) {
     /** Create a [PrimitivePreference] object.*/
-    fun <T> createPrimitivePreference(
+    protected open fun <T> createPrimitivePreference(
         key: Preferences.Key<T>,
         defaultValue: T
-    ): PrimitivePreference<T> =
-        object: PrimitiveDataStorePreference<T>(key = key, defaultValue = defaultValue) {}
+    ): PrimitivePreference<T> = object: PrimitiveDataStorePreference<T>(key, defaultValue) {}
     
     
     /** Create a [ComplexPreference] object.*/
-    fun <T> createComplexPreference(
+    protected open fun <T> createComplexPreference(
         key: Preferences.Key<String>,
         serializer: DataStoreSerializer<T, String>
     ): ComplexPreference<T> = object: ComplexDataStorePreference<T>(key, serializer) {}
     
     
     /** Create a [Preference] object.*/
-    fun <T, R> createPreference(
+    protected open fun <T, R> createPreference(
         key: Preferences.Key<R>,
         serializer: DataStoreSerializer<T, R>
     ): Preference<T, R> = object: DataStorePreference<T, R>(key, serializer) {}

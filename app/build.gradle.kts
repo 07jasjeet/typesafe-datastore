@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":typesafe-datastore-gson"))
     implementation(project(":typesafe-datastore"))
     
     implementation("com.google.code.gson:gson:2.10.1")
