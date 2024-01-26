@@ -21,12 +21,12 @@ Add the dependency in your app's build.gradle file
 ```gradle
 dependencies {
     // Type-safe datastore
-    implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:1.0.0")
+    implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:1.0.1")
     // Alternatively - Gson backed type-safe datastore
-    implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-gson:1.0.0")   
+    implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-gson:1.0.1")   
 
     // Testing
-    testImplementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-test:1.0.0")
+    testImplementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-test:1.0.1")
 }
 ```
 ## Development
