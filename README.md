@@ -7,6 +7,8 @@
   3. Apart from type-safety, various **migration functions** have been included to migrate data inside DataStore in a type-safe way.
   4. **Testing** is really easy.
 
+
+
 ## Gradle Dependency
  Add the JitPack repository to your project's build.gradle file
  ```gradle
@@ -29,11 +31,15 @@ dependencies {
     testImplementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-test:1.0.1")
 }
 ```
+
+
 ## Development
 
 - Prerequisite: Latest version of the Android Studio and SDKs on your pc.
 - Clone this repository.
 - Use the `gradlew build` command to build the project directly or use the IDE to run the project to your phone or the emulator.
+
+
 
 ## Usage (AutoTypedDataStore)
 `AutoTypedDataStore` has various preference creation functions that are backed by `Gson` serializer so that you don't have to write your own
@@ -43,11 +49,17 @@ To get Started, import the library by adding the following dependency.
 ```gradle
 implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-gson:$version")
 ```
-And now add preferences as follows:
+And now in your code, just extend your pre-existing preferences class (if you don't have one, I recommend creating one) with AutoTypedDataStore.
 ```kotlin
 // Your DataStore
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore("prefs")
 
+class MyAutoTypedPreferences(context: Context): AutoTypedDataStore(context.dataStore) {
+    // ...
+}
+```
+And now add preferences as follows:
+```kotlin
 class MyAutoTypedPreferences(context: Context): AutoTypedDataStore(context.dataStore) {
     companion object {
         val key = stringPreferencesKey("key")
@@ -83,6 +95,8 @@ preferences.listPref.getFlow()
 preferences.listPref.getAndUpdate{ ... }
 ```
 
+
+
 ## Usage (TypeSafeDataStore)
 
 If you want to use your own serialization library, you can use `TypeSafeDataStore` and create preferences. To do that, import
@@ -104,6 +118,8 @@ implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:$vers
       val complexPref: ComplexPreference<List<List<String>>>
           get() = createComplexPreference(key, serializer)
   ```
+
+
  
 ## Custom Preferences
  
@@ -142,6 +158,8 @@ implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:$vers
   }
   ```
 
+
+
 ## Migrations
 
 Jetpack DataStore currently has solution to migrate SharedPreference to Preferences DataStore, but there is no such shorthand solution for intra-DataStore migrations.
@@ -159,6 +177,8 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
     }
 )
 ```
+
+
 
 ## Testing
 
