@@ -41,7 +41,7 @@ serializers everytime.
 
 To get Started, import the library by adding the following dependency.
 ```gradle
-implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:1.0.0")
+implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-gson:$version")
 ```
 And now add preferences as follows:
 ```kotlin
@@ -88,7 +88,7 @@ preferences.listPref.getAndUpdate{ ... }
 If you want to use your own serialization library, you can use `TypeSafeDataStore` and create preferences. To do that, import
 this library by adding the following dependency:
 ```gradle
-implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:1.0.0")
+implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:$version")
 ```
   ```kotlin
   class MyPreferences(context: Context): TypeSafeDataStore(context.dataStore)
@@ -164,7 +164,7 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(
 
  And now for the best part, mocking! To get started, import this library by adding the following as a dependency.
  ```gradle
- testImplementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-test:1.0.0")
+ testImplementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore-test:$version")
  ```
  
  Using [mockito-kotlin](https://github.com/mockito/mockito-kotlin) or any other mocking framework, in your test file, do this:
