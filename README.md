@@ -43,7 +43,7 @@ To get Started, import the library by adding the following dependency.
 ```gradle
 implementation("com.github.07jasjeet.typesafe-datastore:typesafe-datastore:1.0.0")
 ```
-And now use as follows:
+And now add preferences as follows:
 ```kotlin
 // Your DataStore
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore("prefs")
@@ -70,6 +70,14 @@ val key = stringPreferencesKey("key")
 
 val customPref: ComplexPreference<SomeClass>
     get() = createCustomPreference(key, defaultValue)
+```
+
+To use these preferences, simply do as follows:
+```kotlin
+// Acquire object by injecting on create one
+val preferences = MyAutoTypedPreferences(context)
+
+preferences.listPref.get()
 ```
 
 ## Usage (TypeSafeDataStore)
