@@ -11,4 +11,14 @@ interface DataStoreSerializer<T, R> {
     
     /** Default value for errors and null values.*/
     fun default(): T
+    
+    companion object {
+        /** Default Serializer if T and R are same in [DataStoreSerializer].*/
+        fun <T> defaultSerializer(defaultValue: T): DataStoreSerializer<T, T> =
+            object: DataStoreSerializer<T, T> {
+                override fun from(value: T): T = value
+                override fun to(value: T): T = value
+                override fun default(): T = defaultValue
+            }
+    }
 }

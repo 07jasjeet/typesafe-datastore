@@ -3,6 +3,7 @@ package com.jasjeet.typesafe_datastore
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import com.jasjeet.typesafe_datastore.DataStoreSerializer.Companion.defaultSerializer
 import com.jasjeet.typesafe_datastore.TypeSafeDataStore.DataStorePreference
 import com.jasjeet.typesafe_datastore.preferences.ComplexPreference
 import com.jasjeet.typesafe_datastore.preferences.Preference
@@ -71,14 +72,6 @@ import java.io.IOException
  * ```
  */
 abstract class TypeSafeDataStore(private val dataStore: DataStore<Preferences>) {
-    /** Default Serializer if T and R are same in [DataStoreSerializer].*/
-    private fun <T> defaultSerializer(defaultValue: T): DataStoreSerializer<T, T> =
-        object: DataStoreSerializer<T, T> {
-            override fun from(value: T): T = value
-            override fun to(value: T): T = value
-            override fun default(): T = defaultValue
-        }
-    
     /** Create a [PrimitivePreference] object.*/
     fun <T> createPrimitivePreference(
         key: Preferences.Key<T>,
