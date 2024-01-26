@@ -1,4 +1,4 @@
-package com.jasjeet.type_safedatastore.ui.theme
+package com.jasjeet.typesafe_datastore_app.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

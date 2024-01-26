@@ -1,4 +1,4 @@
-package com.jasjeet.type_safedatastore
+package com.jasjeet.typesafe_datastore_app
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

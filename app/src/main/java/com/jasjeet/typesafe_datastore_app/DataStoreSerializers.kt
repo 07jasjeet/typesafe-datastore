@@ -1,4 +1,4 @@
-package com.jasjeet.type_safedatastore
+package com.jasjeet.typesafe_datastore_app
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

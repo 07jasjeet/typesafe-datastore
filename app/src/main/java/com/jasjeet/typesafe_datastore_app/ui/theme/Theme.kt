@@ -1,4 +1,4 @@
-package com.jasjeet.type_safedatastore.ui.theme
+package com.jasjeet.typesafe_datastore_app.ui.theme
 
 import android.app.Activity
 import android.os.Build

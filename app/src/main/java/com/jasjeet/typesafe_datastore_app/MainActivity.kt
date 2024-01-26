@@ -1,4 +1,4 @@
-package com.jasjeet.type_safedatastore
+package com.jasjeet.typesafe_datastore_app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -13,7 +13,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.jasjeet.type_safedatastore.ui.theme.TypesafedatastoreTheme
+import com.jasjeet.typesafe_datastore_app.ui.theme.TypesafedatastoreTheme
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {

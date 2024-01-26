@@ -8,7 +8,7 @@ android {
     compileSdk = 34
     
     defaultConfig {
-        applicationId = "com.jasjeet.type_safedatastore"
+        applicationId = "com.jasjeet.typesafe-datastore-app"
         minSdk = 21
         targetSdk = 34
         versionCode = 1

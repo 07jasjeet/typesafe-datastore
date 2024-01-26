@@ -1,4 +1,4 @@
-package com.jasjeet.type_safedatastore
+package com.jasjeet.typesafe_datastore_app
 
 import com.jasjeet.typesafe_datastore.preferences.Preference
 

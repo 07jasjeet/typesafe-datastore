@@ -1,8 +1,8 @@
-package com.jasjeet.type_safedatastore.custompreference
+package com.jasjeet.typesafe_datastore_app.custompreference
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.jasjeet.type_safedatastore.CustomPreference
+import com.jasjeet.typesafe_datastore_app.CustomPreference
 import com.jasjeet.typesafe_datastore.DataStoreSerializer
 import com.jasjeet.typesafe_datastore.TypeSafeDataStore
 
