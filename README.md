@@ -34,19 +34,19 @@ Create preferences as follows:
   Then, extend this class as follows:
   ```kotlin
   abstract class CustomDataStore(dataStore: DataStore<Preferences>): TypeSafeDataStore(dataStore) {
-      // Optional helper function.
-      fun <T, R> createCustomPreference(
-          key: Preferences.Key<R>,
-          serializer: DataStoreSerializer<T, R>
-      ): CustomPreference<T, R> = object: CustomDataStorePreference<T, R>(key, serializer) {}
-  
-      // Required
+      /* Required */
       abstract inner class CustomDataStorePreference<T, R>(
           key: Preferences.Key<R>,
           serializer: DataStoreSerializer<T, R>
       ): CustomPreference<T>, DataStorePreference<T, R>(key, serializer) {
            // ... override functions.
       }
+
+      /* OPTIONAL helper function. */
+      fun <T, R> createCustomPreference(
+          key: Preferences.Key<R>,
+          serializer: DataStoreSerializer<T, R>
+      ): CustomPreference<T, R> = object: CustomDataStorePreference<T, R>(key, serializer) {}
   }
   ```
   Why go all through this? Testability.
