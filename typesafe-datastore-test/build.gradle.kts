@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = BuildVersions.Java.javaVersion
+        targetCompatibility = BuildVersions.Java.javaVersion
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = BuildVersions.Java.javaVersionNumber
     }
     publishing {
         singleVariant("release") {
@@ -41,7 +41,7 @@ android {
 
 dependencies {
     implementation(project(":typesafe-datastore"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 }
 
 publishing {
