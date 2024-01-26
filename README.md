@@ -74,7 +74,7 @@ val customPref: ComplexPreference<SomeClass>
 
 To use these preferences, simply do as follows:
 ```kotlin
-// Acquire object by injecting on create one
+// Acquire object by injecting or create one.
 val preferences = MyAutoTypedPreferences(context)
 
 preferences.listPref.get()
