@@ -30,3 +30,6 @@ google-services.json
 *.hprof
 
 *.env
+gradle.properties
+
+secring.gpg
