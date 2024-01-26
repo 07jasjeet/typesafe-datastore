@@ -1,7 +1,7 @@
-# TypeSafe-DataStore
+# Typesafe-Datastore
   TypeSafeDataStore is a **lightweight** abstraction layer on top of SharedPreferences DataStore that provides type-safety without dealing with Proto-DataStore. 
   
-  Why TypeSafe-DataStore?
+  Why Typesafe-Datastore?
   1. Proto-DataStore is complex, requires plugins and simply overkill for SharedPreferences. Prefer using Room if performance comes into play.
   2. If one is already using Preferences DataStore but wants type-safety, migrating to Proto-DataStore would be a lot of pain in a live app since Proto-DataStore uses Protocol Buffers under the hood. Whereas, this implementation, provides **flexibility** and **easy of migration** on a live app.
   3. Apart from type-safety, various **migration functions** have been included to migrate data inside DataStore in a type-safe way.
@@ -21,12 +21,12 @@ Add the dependency in your app's build.gradle file
 ```gradle
 dependencies {
     // Type-safe datastore
-    implementation("com.github.07jasjeet:typesafe-datastore:1.0")
+    implementation("com.github.07jasjeet:typesafe-datastore:1.0.0")
     // Alternatively - Gson backed type-safe datastore
-    implementation("com.github.07jasjeet:typesafe-datastore-gson:1.0")   
+    implementation("com.github.07jasjeet:typesafe-datastore-gson:1.0.0")   
 
     // Testing
-    testImplementation("com.github.07jasjeet:typesafe-datastore-test:1.0")
+    testImplementation("com.github.07jasjeet:typesafe-datastore-test:1.0.0")
 }
 ```
 ## Development
