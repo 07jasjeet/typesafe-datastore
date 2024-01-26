@@ -1,8 +1,9 @@
 package com.jasjeet.typesafe_datastore.preferences
 
+import com.jasjeet.typesafe_datastore.TypeSafeDataStore
 import kotlinx.coroutines.flow.Flow
 
-/** A Type-safe preference.*/
+/** A Type-safe preference used for [TypeSafeDataStore].*/
 interface Preference<T, R> {
     /** @return T Value of the preference.*/
     suspend fun get(): T

@@ -27,7 +27,7 @@ class MyAutoTypedPreferences(context: Context): AutoTypedDataStore(context.dataS
         val key = stringPreferencesKey("key")
     }
     
-    val preference: ComplexPreference<List<String>>
+    val listPreference: ComplexPreference<List<String>>
         get() = createListPreference(key)
     
 }
