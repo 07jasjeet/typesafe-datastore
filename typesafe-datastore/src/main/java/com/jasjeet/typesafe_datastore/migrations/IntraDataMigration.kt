@@ -104,33 +104,3 @@ fun <R> IntraDataMigration(
         mutablePreferences[newKey] = newValue
         mutablePreferences.toPreferences()
     }
-    
-/** Base Migration class.*/
-private fun <R, NR> CustomMigration(
-    currentKey: Preferences.Key<R>,
-    newKey: Preferences.Key<NR>,
-    cleanUp: suspend () -> Unit,
-    migrationFunction: suspend (currentData: Preferences) -> Preferences
-): DataMigration<Preferences> =
-    object: DataMigration<Preferences> {
-        override suspend fun cleanUp(): Unit = cleanUp()
-        
-        override suspend fun shouldMigrate(currentData: Preferences): Boolean {
-            // If currentKey is deleted, then we are sure that migration took place.
-            return currentData.contains(currentKey)
-        }
-        
-        override suspend fun migrate(currentData: Preferences): Preferences {
-            return try {
-                migrationFunction(currentData)
-            } catch (e: Exception) {
-                throw IllegalArgumentException(
-                    "Could not migrate preference of key ${currentKey.name} to ${newKey.name}: ${e.localizedMessage}"
-                )
-            }
-        }
-}
-
-
-
-
