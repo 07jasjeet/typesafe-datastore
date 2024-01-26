@@ -98,8 +98,11 @@ Create preferences as follows:
         appPreferences.booleanPreference 
       }.doReturn(MockPrimitivePreference(true))
    
-      // Your value will be mocked!
+      // Your values will be mocked!
       appPreferences.somePreference.get()
+      appPreferences.somePreference.set()
+      appPreferences.somePreference.getFlow()
+      appPreferences.somePreference.getAndUpdate{ ... }
    }
  }
  ```
