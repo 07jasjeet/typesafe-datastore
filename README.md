@@ -41,7 +41,7 @@ dependencies {
 
 
 
-## Usage (AutoTypedDataStore)
+## Basic Usage of `AutoTypedDataStore` (Recommended)
 `AutoTypedDataStore` has various preference creation functions that are backed by `Gson` serializer so that you don't have to write your own
 serializers everytime.
 
@@ -97,7 +97,7 @@ preferences.listPref.getAndUpdate{ ... }
 
 
 
-## Usage (TypeSafeDataStore)
+## Basic Usage of `TypeSafeDataStore` 
 
 If you want to use your own serialization library, you can use `TypeSafeDataStore` and create preferences. To do that, import
 this library by adding the following dependency:
