@@ -2,8 +2,7 @@
   Typesafe-Datastore is a **lightweight** abstraction layer on top of SharedPreferences DataStore that provides type-safety without dealing with Proto-DataStore. 
   
   Why Typesafe-Datastore?
-  1. Proto-DataStore is not-so-beginner-friendly, requires plugins and overkill for the use case of that required SharedPreferences although it has its own advantages like better performance than normal 
-serialization methods but it is usually recommmended to use Room if performance comes into play.
+  1. Proto-DataStore is not-so-beginner-friendly, requires plugins and over-engineered for the use cases of that required SharedPreferences. Although Proto-DataStore has its own advantages like better performance than normal serialization methods, it is usually recommmended to use Room if performance comes into play.
   2. If one is already using Preferences DataStore but wants type-safety, migrating to Proto-DataStore would be a lot of pain in a live app since Proto-DataStore uses Protocol Buffers under the hood. Whereas, this implementation, provides **flexibility** and **easy of migration** on a live app.
   3. Apart from type-safety, various **migration functions** have been included to migrate data inside DataStore in a type-safe way.
   4. **Testing** is really easy.
