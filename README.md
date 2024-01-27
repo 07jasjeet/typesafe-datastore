@@ -42,7 +42,7 @@ dependencies {
 
 
 ## Basic Usage of `AutoTypedDataStore` (Recommended)
-`AutoTypedDataStore` has various preference creation functions that are backed by `Gson` serializer so that you don't have to write your own
+`AutoTypedDataStore` has various preference creation functions that are backed by `TypeSafeDataStore` (see below) for type-safety and `Gson` serializer so that you don't have to write your own
 serializers everytime.
 
 To get Started, import the library by adding the following dependency.
