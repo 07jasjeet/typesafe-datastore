@@ -66,12 +66,12 @@ class MyAutoTypedPreferences(context: Context): AutoTypedDataStore(context.dataS
     }
     
     val listPref: ComplexPreference<List<String>>
-        get() = createListPreference(key)
+        get() = listPreference(key)
 
     // or
 
     val mapPref: ComplexPreference<Map<String, List<String>>>
-        get() = createMapPreference(key)
+        get() = mapPreference(key)
 
     // ... and many other pre-defined preferences
 }
@@ -81,7 +81,7 @@ You can also add custom preferences without any boilerplate as follows:
 val key = stringPreferencesKey("key")
 
 val customPref: ComplexPreference<SomeClass>
-    get() = createCustomPreference(key, defaultValue)
+    get() = customPreference(key, defaultValue)
 ```
 
 To use these preferences, simply do as follows:

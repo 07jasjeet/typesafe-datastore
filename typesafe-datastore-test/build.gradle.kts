@@ -41,7 +41,7 @@ android {
 
 dependencies {
     implementation(project(":typesafe-datastore"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 }
 
 publishing {
@@ -49,7 +49,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.07jasjeet"
             artifactId = "typesafe-datastore-test"
-            version = "1.0.0"
+            version = "1.0.2"
             
             afterEvaluate {
                 from(components["release"])
