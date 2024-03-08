@@ -5,7 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 
 /** Base Migration class.*/
 @JvmOverloads
-internal fun <R, NR> CustomMigration(
+fun <R, NR> CustomMigration(
     currentKey: Preferences.Key<R>,
     newKey: Preferences.Key<NR>,
     cleanUp: suspend () -> Unit = {},
